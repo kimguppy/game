@@ -29,4 +29,4 @@
 
 ## 주어진 숫자 정수형으로 처리 후 개별출력(재귀구조사용)
 
-![이미지]([https://github.com/kimguppy/game/blob/main/week3/class/img/%EC%9E%AC%EA%B7%80.png](https://github.com/kimguppy/game/blob/main/week3/img/%EC%9E%AC%EA%B7%80.png)https://github.com/kimguppy/game/blob/main/week3/img/%EC%9E%AC%EA%B7%80.png)
+![이미지](https://github.com/kimguppy/game/blob/main/week3/img/%EC%9E%AC%EA%B7%80.png)
