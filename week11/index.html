@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    #game-container {
+        position: relative;
+    }
+
+    canvas {
+        border: 1px solid #d3d3d3;
+        background-color: #f1f1f1;
+    }
+
+
+    #restart-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-300%, -50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        color: #fff;
+        background-color: #3498db;
+        border: 1px solid #3498db;
+        display: none;
+    }
+
+    #restart-button:hover {
+        background-color: #2980b9;
+    }
+
+
+    #start-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-350%, -50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        color: #fff;
+        background-color: #3498db;
+        border: 1px solid #3498db;
+    }
+
+    #restart-button:hover {
+        background-color: #2980b9;
+    }
+
+    #next-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-350%, -50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        color: #fff;
+        background-color: #3498db;
+        border: 1px solid #3498db;
+        display: none;
+    }
+
+    #next-button:hover {
+        background-color: #2980b9;
+    }
+
+    
+    #next2-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-350%, -50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        color: #fff;
+        background-color: #3498db;
+        border: 1px solid #3498db;
+        display: none;
+    }
+
+    #next2-button:hover {
+        background-color: #2980b9;
+    }
+
+    #com-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-250%, -50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        color: #fff;
+        background-color: rgb(242, 190, 59);
+        border: 1px solid  rgb(242, 190, 59);
+        display: none;
+    }
+
+    #com-button:hover {
+        background-color:  rgb(242, 184, 59);
+    }
+
+
+    #p {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    #p {
+        background-color: rgba(255, 255, 255, 0.6);
+        position: absolute;
+        top: 60%; /* Adjust this value to change the top position */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        display: none;
+    }
+
+
+</style>
+</head>
+<body onload="readyGame()">
+    <div id="game-container">
+        <script>
+            function sound(src) {
+            this.sound = document.createElement("audio");
+            this.sound.src = src;
+            this.sound.setAttribute("preload", "auto");
+            this.sound.setAttribute("controls", "none");
+            this.sound.style.display = "none";
+            document.body.appendChild(this.sound);
+            this.play = function(){
+                this.sound.play();
+            }
+            this.stop = function(){
+                this.sound.pause();
+            }    
+}
+
+            var myGamePiece;
+            var myObstacles = [];
+            var myScore;
+            var Background = ["/image/1_game_background.png", "/image/2_game_background.png", "/image/3_game_background.png","/image/4_game_background.png"];
+            var stage = 150;
+
+            var heart = 3;
+            var myheart;
+            var AUheart = 0;
+            var mySound;
+            var myMusic;
+            var ester=0;;
+
+            function readyGame() {
+                myBackground = new component(656, 270, Background[0], 0, 0, "background");
+                myMusic = new sound("BGM1.mp3");
+                mySound = new sound("퍽.mp3");
+                myMusic.play();
+                myGameArea.start();
+            }
+
+            function startGame() {
+                myheart = new component(30, 26, "heart.png",480, 130, "image");
+                document.getElementById("start-button").style.display = "none";
+                myMusic = new sound("BGM1.mp3");
+                mySound = new sound("퍽.mp3");
+                myMusic.play();
+                myGamePiece = new component(33, 16, "/image/turtle/1.png", 10, 120, "image");
+            }
+            
+            var myGameArea = {
+                canvas: document.createElement("canvas"),
+                start: function () {
+                    this.canvas.width = 480;
+                    this.canvas.height = 270;
+                    this.context = this.canvas.getContext("2d");
+
+                    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                    this.frameNo = 0;
+
+
+                    this.interval = setInterval(updateGameArea, 20);
+                },
+
+                clear: function () {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                },
+                stop: function () {
+                    clearInterval(this.interval);
+                }
+            }
+
+            function component(width, height, color, x, y, type) {
+                this.type = type;
+                if (type == "image" || type == "background") {
+                    this.image = new Image();
+                    this.image.src = color;
+                }
+                this.width = width;
+                this.height = height;
+                this.speedX = 0;
+                this.speedY = 0;
+                this.x = x;
+                this.y = y;
+
+                this.update = function () {
+                    ctx = myGameArea.context;
+                    if (type == "image" || type == "background") {
+                        ctx.drawImage(this.image,
+                            this.x,
+                            this.y,
+                            this.width, this.height);
+                        if (type == "background") {
+                            ctx.drawImage(this.image,
+                                this.x + this.width,
+                                this.y,
+                                this.width, this.height);
+                        }
+                    } else {
+                        ctx.fillStyle = color;
+                        ctx.fillRect(this.x, this.y, this.width, this.height);
+                    }
+                }
+
+                this.hurtupdate = function () {
+                    ctx = myGameArea.context;
+                    if (type == "image" || type == "background") {
+                        var hurtImage = new Image();
+                        hurtImage.src = "/image/turtle/7.png";
+                        ctx.drawImage(hurtImage,
+                            this.x,
+                            this.y,
+                            this.width, this.height);
+                    } else {
+                        ctx.fillStyle = color;
+                        ctx.fillRect(this.x, this.y, this.width, this.height);
+                    }
+                }
+
+                this.newPos = function () {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.type == "background") {
+                        if (this.x == -(this.width)) {
+                            this.x = 0;
+                        }
+                    }
+                    if (this.y> 270){ ester+=1;}
+
+                }
+
+                this.crashWith = function (otherobj) {
+                    var myleft = this.x;
+                    var myright = this.x + (this.width);
+                    var mytop = this.y;
+                    var mybottom = this.y + (this.height);
+
+                    var otherleft = otherobj.x;
+                    var otherright = otherobj.x + (otherobj.width);
+                    var othertop = otherobj.y;
+                    var otherbottom = otherobj.y + (otherobj.height);
+
+                    var crash = true;
+                    if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+                        crash = false;
+                    }
+                    return crash;
+                }
+            }
+
+            function updateGameArea() {
+                var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+
+                if(AUheart>0) {AUheart= AUheart-2;
+                }else if(AUheart == 0){
+                for (i = 0; i < myObstacles.length; i += 1) {
+                    if (myGamePiece.crashWith(myObstacles[i])) {
+                        AUheart = stage;
+                        mySound.play();
+                        heart = heart - 1;
+                    }
+                }}
+
+                if (myGamePiece.crashWith(myheart)) {
+                    if(heart!=3){ heart+=1;}
+                    myheart.speedX = -400;
+                    myheart.newPos();
+                    myheart.update();
+                }
+
+                myGameArea.clear();
+                myGameArea.frameNo += 1;
+
+                myBackground.speedX = -1;
+                myBackground.newPos();
+                myBackground.update();
+
+                if(myGameArea.frameNo < 1200){
+                if (myGameArea.frameNo == 1 || everyinterval(stage)) {
+                    x = myGameArea.canvas.width;
+                    minHeight = 20;
+                    maxHeight = 200;
+                    height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
+
+                    var randomValue = Math.floor(Math.random() * 3);
+                    if (randomValue == 0) { myObstacles.push(new component(38, 12, "/image/earthworm/1.png", x, height, "image")); }
+                    else if (randomValue == 1) { myObstacles.push(new component(19, 26, "/image/jellyfish/1.png", x, height, "image")); }
+                    else { myObstacles.push(new component(47, 24, "/image/marlin/1.png", x, height, "image")); }
+                }}else if (myGameArea.frameNo==1500){
+                    myGameArea.stop();
+                    if(stage==150){document.getElementById("next-button").style.display = "block";}
+                    else if(stage==100){document.getElementById("next2-button").style.display = "block";}
+                    else if(stage==90){ 
+                        myBackground = new component(480, 270, Background[2], 0, 0, "background");
+                        myBackground.newPos();
+                        myBackground.update();
+                        WinGame();}
+                    myMusic.stop();
+                    return;
+                }
+                if (myGameArea.frameNo>625){
+                    myheart.speedX = -1;
+                    myheart.newPos();
+                    myheart.update();
+                }
+                for (i = 0; i < myObstacles.length; i += 1) {
+                    if(stage==150){myObstacles[i].speedX = -1;}
+                    else if(stage==100){myObstacles[i].speedX = -3;}
+                    else if(stage==90){myObstacles[i].speedX = -5;}
+                    myObstacles[i].newPos();
+                    myObstacles[i].update();
+                }
+    
+                if (ester>200) {document.getElementById("p").style.display = "block";}
+                myGamePiece.newPos();
+                if(AUheart == 0){myGamePiece.update();}
+                else{myGamePiece.hurtupdate();}
+                damage(); 
+
+
+            }
+
+            function damage() {
+                if (heart > 0) {
+                var heartImageSrc = "/image/heart" + heart + ".png";
+                var heartComponent = new component(120, 50, heartImageSrc, 350, 0, "image");
+                heartComponent.update();
+            }
+                if (heart == 0) {
+                    myGameArea.stop();
+                    document.getElementById("restart-button").style.display = "block";
+                    myMusic.stop();
+                    endGame();
+                    return;
+                }
+            }
+
+            function everyinterval(n) {
+                if ((myGameArea.frameNo / n) % 1 == 0) { return true; }
+                return false;
+            }
+            document.addEventListener("keydown", keyDownHandler, false);
+            document.addEventListener("keyup", keyUpHandler, false);
+
+            function keyDownHandler(e) {
+                if (e.key == "ArrowUp") {
+                    moveup();
+                } else if (e.key == "ArrowDown") {
+                    movedown();
+                } else if (e.key == "ArrowLeft") {
+                    moveleft();
+                } else if (e.key == "ArrowRight") {
+                    moveright();
+                }
+            }
+
+            function keyUpHandler(e) {
+                if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+                    clearmove();
+                }
+                if (e.key == "ArrowLeft" || e.key == "ArrowRight") {
+                    clearmove();
+                }
+            }
+
+            function moveup() { myGamePiece.speedY = -1; }
+            function movedown() { myGamePiece.speedY = 1; }
+            function moveleft() { myGamePiece.speedX = -1; }
+            function moveright() { myGamePiece.speedX = 1; }
+            
+            function clearmove() {
+                myGamePiece.speedX = 0;
+                myGamePiece.speedY = 0;
+            }
+
+            function restartGame() {
+                myMusic.stop();
+                document.getElementById("restart-button").style.display = "none";
+                myGameArea.clear();
+                myObstacles = [];
+                myGameArea.frameNo = 0;
+                ester = 0;
+                document.getElementById("p").style.display = "none";
+                document.getElementById("com-button").style.display = "none";
+                heart = 3;
+                AUheart = 0;
+                stage = 150;
+                myBackground = new component(656, 270, Background[0], 0, 0, "background");
+                myGamePiece = new component(33, 16, "/image/turtle/1.png", 10, 120, "image");
+                myheart = new component(30, 26, "heart.png",480, 130, "image");
+                mySound = new sound("퍽.mp3");
+                myMusic = new sound("BGM1.mp3");
+                myMusic.play();
+                myGameArea.start();
+            }
+
+            function nextstartgame() {
+                document.getElementById("next-button").style.display = "none";
+                myGameArea.clear();
+                myObstacles = [];
+                myGameArea.frameNo = 0;
+                heart = 3;
+                stage = 100;
+                ester = 0;
+                document.getElementById("p").style.display = "none";
+                myBackground = new component(656, 270, Background[1], 0, 0, "background");
+                myheart = new component(30, 26, "heart.png",480, 130, "image");
+                mySound = new sound("퍽.mp3");
+                myMusic = new sound("BGM2.mp3");
+                myMusic.play();
+                AUheart = 0;
+                myGamePiece = new component(33, 16, "/image/turtle/1.png", 10, 120, "image");
+                myGameArea.start();
+            }
+
+            function next2startgame() {
+                document.getElementById("next2-button").style.display = "none";
+                myGameArea.clear();
+                myObstacles = [];
+                myGameArea.frameNo = 0;
+                heart = 3;
+                ester = 0;
+                document.getElementById("p").style.display = "none";
+                stage = 90;
+                myBackground = new component(656, 270, Background[2], 0, 0, "background");
+                myheart = new component(30, 26, "heart.png",480, 130, "image");
+                mySound = new sound("퍽.mp3");
+                myMusic = new sound("BGM3.mp3");
+                myMusic.play();
+                AUheart = 0;
+                myGamePiece = new component(33, 16, "/image/turtle/1.png", 10, 120, "image");
+                myGameArea.start();
+            }
+
+            function endGame() {
+                myGameArea.stop();
+                document.getElementById("restart-button").style.display = "block";
+            }
+
+
+            function WinGame() {
+            myObstacles = [];
+            document.getElementById("p").style.display = "none";
+            myGameArea.frameNo = 0;
+            myBackground = new component(480, 270, Background[3], 0, 0, "background");
+            document.getElementById("com-button").style.display = "block";
+        }
+
+
+
+        </script>
+
+
+        <button id="start-button" onclick="startGame()">Start</button>
+        <button id="next-button" onclick="nextstartgame()">Next></button>
+        <button id="next2-button" onclick="next2startgame()">Next></button>
+        <button id="restart-button" onclick="restartGame()">Restart</button>
+        <button id="com-button" onclick="restartGame()">Complete!</button>
+    </div>
+    <br><br><p id="p"> 거북이: 와... 편하다. </p>
+</body>
+</html>

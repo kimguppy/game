@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤한 공 떨어뜨리기 예제</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const balls = [];
+
+        canvas.addEventListener('click', (event) => {
+            const numBalls = getRandomNumber(1, 10); // 랜덤한 개수의 공 생성 (1개에서 10개 사이)
+            for (let i = 0; i < numBalls; i++) {
+                const x = event.clientX;
+                const y = event.clientY;
+                const radius = getRandomNumber(10, 50); // 랜덤한 반지름 (10에서 50 사이)
+                const color = getRandomColor();
+                const dx = (Math.random() - 0.5) * 10;
+                const dy = -Math.random() * 10;
+
+                balls.push({ x, y, radius, color, dx, dy });
+            }
+        });
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            balls.forEach((ball, index) => {
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fillStyle = ball.color;
+                ctx.fill();
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+                ball.dy += 0.5;
+
+                if (ball.y + ball.radius > canvas.height) {
+                    ball.dy *= -0.8;
+                    ball.radius = Math.max(5, ball.radius * 0.8);
+                }
+
+                if (ball.x + ball.radius < 0 || ball.x - ball.radius > canvas.width || ball.y - ball.radius > canvas.height) {
+                    balls.splice(index, 1);
+                }
+            });
+        }
+
+        animate();
+    </script>
+</body>
+</html>
