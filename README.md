@@ -30,7 +30,7 @@ C 코드로 만들어진 예제 기능 분석하고 이름 달기
 과제 2: Caavas 코드로 만들어진 게임 예제 코드 업그레이드 후 발표
 
 ## [week12](https://github.com/kimguppy/game/tree/main/week12)
-개인발표: Unity Colider와 OnTrigger 게임 기능 구연 소개 및 시연
+개인발표: Unity Colider와 OnTrigger 게임 기능 구연 소개 및 시현
 
 Unity 입문 예제1
 
