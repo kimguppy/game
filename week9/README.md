@@ -1,4 +1,4 @@
-# 개인발표: Caavas 소개 및 예제 시연
+# 개인발표: Caavas 소개 및 예제 시현
 
 ![이미지](https://github.com/kimguppy/game/blob/main/week9/img/001.jpg)
 
