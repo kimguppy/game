@@ -1,15 +1,18 @@
-# Game Programing notepad
+![Game Programing notepad](https://capsule-render.vercel.app/api?type=slice)
 
 ## week1
+DEV C++ 개발환경 구성하기 
 
 ## week2
+C 코드로 구성된 기본 게임 코드 습득하기
+- VScode에서 C 컴파일 하기
+- VSCode에서 github 연동하여 commit 하기
 
 ## [week3](https://github.com/kimguppy/game/tree/main/week3)
-C 코드로 만들어진 예제 기능 분석하고 이름 달기
+C 코드로 만들어진 예제 코드 분석하고 이름 달기
 
-## week4
-
-## week5
+## week4 week5
+게임 제작과정
 
 ## [week6](https://github.com/kimguppy/game/tree/main/week6)
 과제1: C 코드로 만들어진 게임 예제 코드 분석 후 발표
