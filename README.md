@@ -1,13 +1,5 @@
-<div style="background-image: linear-gradient(90deg, #0074cc 0%, #0074cc 25%, #005792 25%, #005792 50%, #0074cc 50%, #0074cc 75%, #005792 75%, #005792 100%); background-size: 200% 100%; animation: wave-animation 1s infinite linear;">
-    <h1 style="text-align: center; color: white;">Game Programming Notepad</h1>
-</div>
+![Game Programming Notepad Header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=Game%20Programming%20Notepad&fontSize=90)
 
-<style>
-@keyframes wave-animation {
-    0% { background-position: 0 0; }
-    100% { background-position: 200% 0; }
-}
-</style>
 
 ## week1
 DEV C++ 개발환경 구성하기 
