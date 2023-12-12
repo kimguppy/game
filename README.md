@@ -2,15 +2,11 @@
 ![header](https://capsule-render.vercel.app/api?type=wave&color=132043&height=300&section=header&text=Game%20Programming%20Notepad&fontSize=50&fontColor=F1B4BB)
 
 
-
-## <span style="color:#1F4172">week1</span>
-DEV C++ 개발환경 구성하기 
-
-
-## week2
+## >week1 week2
 C 코드로 구성된 기본 게임 코드 습득하기
 - VScode에서 C 컴파일 하기
 - VSCode에서 github 연동하여 commit 하기
+- DEV C++ 개발환경 구성하기 
 
 
 ## [week3](https://github.com/kimguppy/game/tree/main/week3)
