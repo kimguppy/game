@@ -1,15 +1,9 @@
-.week{
-color: #1F4172
-}
 
 ![header](https://capsule-render.vercel.app/api?type=wave&color=132043&height=300&section=header&text=Game%20Programming%20Notepad&fontSize=50&fontColor=F1B4BB)
 
 
-<a href="https://myvelop.tistory.com/" style="color: red;">myvelop</a>
 
-
-
-## <span style="color:red"> week1 </span>
+## <span style="color:1F4172"> week1 </span>
 DEV C++ 개발환경 구성하기 
 
 ## week2
