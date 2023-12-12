@@ -26,6 +26,7 @@ C 코드로 구성된 기본 게임 코드 습득하기
 
 
 ## [week7](https://github.com/kimguppy/game/tree/main/week7)
+![]([https://i.esdrop.com/d/ZklKfna5T3.jpg](https://github.com/kimguppy/game/blob/main/c.png))
 과제1:  C 코드로 만들어진 게임 예제 코드 업그레이드 후 발표
 
 
@@ -42,6 +43,7 @@ C 코드로 구성된 기본 게임 코드 습득하기
 
 
 ## [week11](https://github.com/kimguppy/game/tree/main/week11)
+![](https://i.esdrop.com/d/ZklKfna5T3.jpg)
 과제 2: Caavas 코드로 만들어진 게임 예제 코드 업그레이드 후 발표
 
 
@@ -55,7 +57,8 @@ C 코드로 구성된 기본 게임 코드 습득하기
 - Unity 입문 예제2
 
 
-## week14
+## [week14](https://github.com/kimguppy/game/tree/main/week14)
+![](https://i.esdrop.com/d/ZklKfna5T3.jpg)
 과제 3: Unity 관련 소스 찾고 업그레이드 후 발표
 
 
