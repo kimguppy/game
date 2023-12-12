@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule%20render&fontSize=50)
+![header](https://capsule-render.vercel.app/api?type=wave&color=#132043&height=300&section=header&text=Game%20Programming%20Notepad&fontSize=50)
 
 ## week1
 DEV C++ 개발환경 구성하기 
