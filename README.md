@@ -1,6 +1,14 @@
-https://github.com/kyechan99/capsule-render
+<div style="background-image: linear-gradient(90deg, #0074cc 0%, #0074cc 25%, #005792 25%, #005792 50%, #0074cc 50%, #0074cc 75%, #005792 75%, #005792 100%); background-size: 200% 100%; animation: wave-animation 1s infinite linear;">
+    <h1 style="text-align: center; color: white;">Game Programming Notepad</h1>
+</div>
 
-![[Game Programing notepad](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=Hi%20there👋&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
+<style>
+@keyframes wave-animation {
+    0% { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+}
+</style>
+
 ## week1
 DEV C++ 개발환경 구성하기 
 
