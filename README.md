@@ -48,7 +48,7 @@ C 코드로 구성된 기본 게임 코드 습득하기
 ## [week12](https://github.com/kimguppy/game/tree/main/week12)
 개인발표: Unity Colider와 OnTrigger 게임 기능 구연 소개 및 시현
 
--Unity 입문 예제1
+- Unity 입문 예제1
 
 
 ## [week13](https://github.com/kimguppy/game/tree/main/week13)
