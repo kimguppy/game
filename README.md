@@ -9,7 +9,7 @@ color: #1F4172
 
 
 
-## week1 {: .week}
+## <span style="color:red"> week1 </span>
 DEV C++ 개발환경 구성하기 
 
 ## week2
